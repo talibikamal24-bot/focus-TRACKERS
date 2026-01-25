@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiTracker Pro - متتبعات العادات، المهام، والمصاريف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: white;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-alt {
+            background: #f8fafc;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cairo', sans-serif;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--gray);
+        }
+        
+        /* شريط التنقل */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-cta .btn {
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-cta .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        /* الهيدر */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-left: 40px;
+        }
+        
+        .hero h1 {
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #0da271;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        
+        /* المتتبعات */
+        .trackers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .tracker-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .tracker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tracker-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .habit-icon {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        
+        .task-icon {
+            background: linear-gradient(135deg, #10b981, #0da271);
+        }
+        
+        .finance-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        /* الأسعار */
+        .pricing {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+        }
+        
+        .pricing h2:after {
+            background: var(--accent);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pricing-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.popular {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: white;
+        }
+        
+        .price small {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .price-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .price-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .price-features li i {
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .savings-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* الشهادات */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .author {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* الأسئلة الشائعة */
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* وسائل التواصل الاجتماعي */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .facebook-bg {
+            background: linear-gradient(135deg, #1877F2, #0D5FDB);
+        }
+        
+        .instagram-bg {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .tiktok-bg {
+            background: linear-gradient(135deg, #000000, #333333, #69C9D0, #EE1D52);
+        }
+        
+        .social-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 15px;
+        }
+        
+        /* واتساب */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .whatsapp-section h3 {
+            color: white;
+        }
+        
+        .whatsapp-section h3:after {
+            background: white;
+        }
+        
+        .whatsapp-section p {
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+        
+        .whatsapp-btn {
+            background: white;
+            color: #25d366;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-btn:hover {
+            background: #f1f1f1;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* الفوتر */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .footer a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+            margin-bottom: 0;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            padding-right: 0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+        }
+        
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .hero .container {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding-left: 0;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 15px;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 26px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-chart-line"></i>
+                MultiTracker
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#trackers">المتتبعات</a></li>
+                <li><a href="#pricing">الأسعار</a></li>
+                <li><a href="#testimonials">الشهادات</a></li>
+                <li><a href="#faq">الأسئلة</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="#pricing" class="btn">اشتري الآن</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الهيدر -->
+    <header class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>حول أهدافك إلى إنجازات مع متتبعاتنا المتخصصة</h1>
+                <p>مجموعة متكاملة من المتتبعات الذكية تساعدك على بناء عادات إيجابية، تنظيم مهامك، وتحسين وضعك المالي. كل شيء في مكان واحد!</p>
+                
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-primary">اشتر الآن</a>
+                    <a href="#trackers" class="btn btn-outline">تعرف على المتتبعات</a>
+                </div>
+                
+                <!-- وسائل التواصل في الهيدر -->
+                <div class="social-links" style="justify-content: flex-start;">
+                    <a href="https://facebook.com/yourpage" class="social-link facebook-bg" target="_blank" title="تابعنا على فيسبوك">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/yourpage" class="social-link instagram-bg" target="_blank" title="تابعنا على إنستغرام">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@yourpage" class="social-link tiktok-bg" target="_blank" title="تابعنا على تيك توك">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="تطبيقات التتبع المتعددة">
+            </div>
+        </div>
+    </header>
+
+    <!-- المتتبعات -->
+    <section id="trackers" class="trackers section section-alt">
+        <div class="container">
+            <h2 class="text-center">متتبعاتنا المتخصصة</h2>
+            <p class="text-center">اختر ما يناسب احتياجاتك أو استفد من الباقة الكاملة</p>
+            
+            <div class="trackers-grid">
+                <div class="tracker-card">
+                    <div class="tracker-icon habit-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>متتبع العادات</h3>
+                    <p>أداة تساعدك على تتبع عاداتك اليومية مثل الاستيقاظ المبكر، الرياضة، القراءة، وشرب الماء. يتيح لك رؤية التزامك اليومي والأسبوعي بطريقة منظمة، مما يساعدك على بناء عادات إيجابية والاستمرار عليها.</p>
+                    <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تتبع حتى 10 عادات يومية</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> إشعارات وتذكيرات ذكية</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تقارير أسبوعية وشهرية</li>
+                    </ul>
+                </div>
+                
+                <div class="tracker-card">
+                    <div class="tracker-icon task-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>متتبع المهام</h3>
+                    <p>يساعدك على تنظيم مهامك اليومية والأسبوعية، تحديد الأولويات، ومعرفة المهام المنجزة وغير المنجزة. مناسب للطلاب، الموظفين، وأصحاب المشاريع لزيادة الإنتاجية وتقليل التشتت.</p>
+                    <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> إدارة 50 مهمة نشطة</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تقسيم المهام إلى خطوات</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تذكير بالمواعيد النهائية</li>
+                    </ul>
+                </div>
+                
+                <div class="tracker-card">
+                    <div class="tracker-icon finance-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>متتبع المصاريف</h3>
+                    <p>أداة بسيطة لتسجيل المصاريف والدخل اليومي، ومعرفة أين يذهب المال. يساعدك على التحكم في ميزانيتك، تقليل المصاريف غير الضرورية، وتحسين التخطيط المالي.</p>
+                    <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تتبع المصاريف والدخل</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تصنيف النفقات</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تحليل الإنفاق الشهري</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسعار -->
+    <section id="pricing" class="pricing section">
+        <div class="container">
+            <h2 class="text-center">خطط الأسعار</h2>
+            <p class="text-center">اختر الباقة التي تناسب احتياجاتك ووفر عند الشراء الجماعي</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>متتبع واحد</h3>
+                    <p>اختر متتبعاً واحداً يناسبك</p>
+                    <div class="price">
+                        25 درهم
+                        <small>≈ 2.5 دولار</small>
+                    </div>
+                    
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> متتبع واحد باختيارك</li>
+                        <li><i class="fas fa-check"></i> تحديثات مجانية</li>
+                        <li><i class="fas fa-check"></i> دعم فني أساسي</li>
+                        <li><i class="fas fa-check"></i> نسخة ويب وجوال</li>
+                        <li><i class="fas fa-times"></i> متتبعات إضافية</li>
+                        <li><i class="fas fa-times"></i> تقارير متقدمة</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/212612345678?text=أريد شراء متتبع واحد" class="btn btn-outline" target="_blank">اشتري الآن</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="savings-badge">وفر 22%</div>
+                    <h3>باقة 3 متتبعات</h3>
+                    <p>الأكثر مبيعاً وتوفيراً</p>
+                    <div class="price">
+                        59 درهم
+                        <small>≈ 6 دولارات</small>
+                    </div>
+                    
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> جميع المتتبعات الثلاثة</li>
+                        <li><i class="fas fa-check"></i> تحديثات مجانية دائمة</li>
+                        <li><i class="fas fa-check"></i> دعم فني متميز</li>
+                        <li><i class="fas fa-check"></i> نسخة ويب وجوال</li>
+                        <li><i class="fas fa-check"></i> تقارير متقدمة</li>
+                        <li><i class="fas fa-check"></i> مزامنة بين الأجهزة</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/212612345678?text=أريد شراء باقة 3 متتبعات" class="btn btn-primary" target="_blank">اشتري الباقة</a>
+                </div>
+            </div>
+            
+            <p class="text-center" style="margin-top: 30px; color: #cbd5e1;">جميع الأسعار تشمل ضمان استرداد الأموال لمدة 14 يوم</p>
+        </div>
+    </section>
+
+    <!-- الشهادات -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <h2 class="text-center">ماذا يقول مستخدمونا؟</h2>
+            <p class="text-center">انضم إلى مئات الأشخاص الذين حسنوا من حياتهم باستخدام متتبعاتنا</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"متتبع العادات غير حياتي تماماً! استطعت الانتظام على الرياضة والقراءة لأول مرة في حياتي."</p>
+                    <div class="author">أحمد - طالب جامعي</div>
+                    <div style="color: #fbbf24;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"كمستقل، متتبع المهام ساعدني على تنظيم عملي وزيادة إنتاجيتي بنسبة 50% على الأقل."</p>
+                    <div class="author">سارة - مصممة جرافيك</div>
+                    <div style="color: #fbbf24;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"متتبع المصاريف جعلني أتحكم في مصروفي وأوفر 30% من دخلي الشهري. أنصح به بشدة!"</p>
+                    <div class="author">محمد - مهندس برمجيات</div>
+                    <div style="color: #fbbf24;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section id="faq" class="faq section section-alt">
+        <div class="container">
+            <h2 class="text-center">الأسئلة الشائعة</h2>
+            
+            <div style="max-width: 800px; margin: 50px auto 0;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        كيف أشتري المتتبع؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يمكنك الشراء مباشرة عبر واتساب. اضغط على زر "اشتري الآن" وستتواصل معنا عبر واتساب لإتمام عملية الشراء.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكنني تجربة المتتبع قبل الشراء؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نقدم نسخة تجريبية مجانية لمدة 7 أيام لكل متتبع. يمكنك طلبها عبر واتساب.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        كيف أحصل على الدعم الفني؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نقدم دعم فني على واتساب على مدار الساعة. يمكنك التواصل معنا في أي وقت للمساعدة.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكنني الترقية من متتبع واحد إلى الباقة الكاملة؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يمكنك الترقية في أي وقت وستدفع فقط فرق السعر بين المتتبع والباقة الكاملة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم وسائل التواصل الاجتماعي -->
+    <section class="social-section section">
+        <div class="container">
+            <h2 class="text-center">تابعنا على وسائل التواصل الاجتماعي</h2>
+            <p class="text-center">انضم إلى مجتمعنا للحصول على نصائح حصرية، تحديثات، وعروض خاصة</p>
+            
+            <div class="social-links">
+                <a href="https://facebook.com/yourpage" class="social-link facebook-bg" target="_blank" title="تابعنا على فيسبوك">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/yourpage" class="social-link instagram-bg" target="_blank" title="تابعنا على إنستغرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@yourpage" class="social-link tiktok-bg" target="_blank" title="تابعنا على تيك توك">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            
+            <div class="text-center" style="margin-top: 30px;">
+                <p>على صفحاتنا تجد:</p>
+                <div style="display: inline-block; text-align: right; margin-top: 15px;">
+                    <p><i class="fas fa-check" style="color: var(--secondary); margin-left: 10px;"></i> نصائح يومية لبناء العادات</p>
+                    <p><i class="fas fa-check" style="color: var(--secondary); margin-left: 10px;"></i> دروس عملية في الإنتاجية</p>
+                    <p><i class="fas fa-check" style="color: var(--secondary); margin-left: 10px;"></i> عروض خاصة للمتابعين فقط</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم واتساب -->
+    <section class="whatsapp-section section">
+        <div class="container">
+            <h3>تواصل معنا مباشرة على واتساب</h3>
+            <p>لديك سؤال أو تحتاج مساعدة في اختيار الباقة المناسبة؟ تواصل معنا الآن للحصول على استشارة مجانية.</p>
+            <a href="https://wa.me/212612345678?text=مرحباً، أريد الاستفسار عن متتبعات MultiTracker" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                تواصل على واتساب الآن
+            </a>
+            
+            <div style="margin-top: 30px; color: rgba(255,255,255,0.8);">
+                <p><i class="fas fa-clock" style="margin-left: 8px;"></i> متاحون للرد من الساعة 9 صباحاً حتى 10 مساءً</p>
+                <p><i class="fas fa-check-circle" style="margin-left: 8px;"></i> رد فوري خلال دقائق</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>MultiTracker</h3>
+                    <p>منصتك الشاملة لبناء عادات أفضل، إدارة مهام أذكى، ومالية أكثر استقراراً.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/yourpage" target="_blank" title="فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/yourpage" target="_blank" title="إنستغرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@yourpage" target="_blank" title="تيك توك">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/212612345678" target="_blank" title="واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4>المتتبعات</h4>
+                    <a href="#trackers">متتبع العادات</a>
+                    <a href="#trackers">متتبع المهام</a>
+                    <a href="#trackers">متتبع المصاريف</a>
+                </div>
+                
+                <div>
+                    <h4>روابط سريعة</h4>
+                    <a href="#pricing">الأسعار</a>
+                    <a href="#testimonials">الشهادات</a>
+                    <a href="#faq">الأسئلة الشائعة</a>
+                </div>
+                
+                <div>
+                    <h4>اتصل بنا</h4>
+                    <a href="mailto:info@multitracker.com">info@multitracker.com</a>
+                    <a href="tel:+212612345678">+212 612-345678</a>
+                    <p>المغرب</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 MultiTracker. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر واتساب عائم -->
+    <a href="https://wa.me/212612345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // الأسئلة الشائعة
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+        
+        // شريط التنقل عند التمرير
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '20px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // روابط التنقل السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تغيير روابط وسائل التواصل الاجتماعي
+        document.addEventListener('DOMContentLoaded', function() {
+            // يمكنك تغيير هذه الروابط لروابطك الحقيقية
+            const socialLinks = {
+                facebook: 'https://facebook.com/yourpage',
+                instagram: 'https://instagram.com/yourpage', 
+                tiktok: 'https://tiktok.com/@yourpage',
+                whatsapp: 'https://wa.me/212612345678'
+            };
+            
+            // تحديث روابط فيسبوك
+            document.querySelectorAll('a[href*="facebook.com"]').forEach(link => {
+                link.setAttribute('href', socialLinks.facebook);
+            });
+            
+            // تحديث روابط إنستغرام
+            document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
+                link.setAttribute('href', socialLinks.instagram);
+            });
+            
+            // تحديث روابط تيك توك
+            document.querySelectorAll('a[href*="tiktok.com"]').forEach(link => {
+                link.setAttribute('href', socialLinks.tiktok);
+            });
+            
+            // تحديث روابط واتساب
+            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+                link.setAttribute('href', socialLinks.whatsapp);
+            });
+            
+            // تحديث رقم الهاتف
+            const phoneLink = document.querySelector('a[href^="tel:"]');
+            if (phoneLink) {
+                phoneLink.setAttribute('href', `tel:+${socialLinks.whatsapp.split('/').pop()}`);
+            }
+        });
+    </script>
+</body>
+</html>
