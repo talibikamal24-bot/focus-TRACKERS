@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiTracker Pro - متتبعات العادات، المهام، والمصاريف</title>
+    <title>Focus.Trackers - حلول الإنتاجية الرقمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -57,12 +57,14 @@
         
         h1 {
             font-size: 2.8rem;
+            font-weight: 700;
         }
         
         h2 {
             font-size: 2.2rem;
             position: relative;
             display: inline-block;
+            font-weight: 700;
         }
         
         h2:after {
@@ -79,6 +81,7 @@
         p {
             margin-bottom: 1.2rem;
             color: var(--gray);
+            font-size: 1.1rem;
         }
         
         /* شريط التنقل */
@@ -91,6 +94,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
             padding: 20px 0;
+            transition: var(--transition);
         }
         
         .navbar .container {
@@ -145,6 +149,7 @@
         .nav-cta .btn:hover {
             background: #1d4ed8;
             transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         
         /* الهيدر */
@@ -177,6 +182,7 @@
         .hero-buttons {
             display: flex;
             gap: 15px;
+            margin-top: 30px;
         }
         
         .btn {
@@ -189,6 +195,7 @@
             border: none;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
         }
         
         .btn-primary {
@@ -233,6 +240,11 @@
             max-width: 100%;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: scale(1.02);
         }
         
         /* المتتبعات */
@@ -250,6 +262,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
+            height: 100%;
         }
         
         .tracker-card:hover {
@@ -317,10 +330,11 @@
         .pricing-card.popular {
             background: rgba(255,255,255,0.1);
             border-color: var(--accent);
+            transform: scale(1.05);
         }
         
         .pricing-card.popular:hover {
-            transform: translateY(-5px);
+            transform: scale(1.05) translateY(-5px);
         }
         
         .price {
@@ -620,6 +634,14 @@
                 margin-bottom: 50px;
                 text-align: center;
             }
+            
+            .pricing-card.popular {
+                transform: none;
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-5px);
+            }
         }
         
         @media (max-width: 768px) {
@@ -663,6 +685,10 @@
                 height: 45px;
                 font-size: 1.2rem;
             }
+            
+            .tracker-card {
+                padding: 25px 20px;
+            }
         }
     </style>
 </head>
@@ -671,12 +697,12 @@
     <nav class="navbar">
         <div class="container">
             <a href="#" class="logo">
-                <i class="fas fa-chart-line"></i>
-                MultiTracker
+                <i class="fas fa-bullseye"></i>
+                focus.trackers
             </a>
             
             <ul class="nav-links">
-                <li><a href="#trackers">المتتبعات</a></li>
+                <li><a href="#trackers">focus.trackers</a></li>
                 <li><a href="#pricing">الأسعار</a></li>
                 <li><a href="#testimonials">الشهادات</a></li>
                 <li><a href="#faq">الأسئلة</a></li>
@@ -692,49 +718,36 @@
     <header class="hero section">
         <div class="container">
             <div class="hero-content">
-                <h1>حول أهدافك إلى إنجازات مع متتبعاتنا المتخصصة</h1>
-                <p>مجموعة متكاملة من المتتبعات الذكية تساعدك على بناء عادات إيجابية، تنظيم مهامك، وتحسين وضعك المالي. كل شيء في مكان واحد!</p>
+                <h1>حلول إنتاجية رقمية متكاملة من focus.trackers</h1>
+                <p>منصة شاملة تجمع بين متتبع العادات، متتبع المهام، ومتتبع المصاريف. صممت لمساعدتك على تحقيق أهدافك الشخصية والمهنية بفعالية.</p>
                 
                 <div class="hero-buttons">
                     <a href="#pricing" class="btn btn-primary">اشتر الآن</a>
-                    <a href="#trackers" class="btn btn-outline">تعرف على المتتبعات</a>
-                </div>
-                
-                <!-- وسائل التواصل في الهيدر -->
-                <div class="social-links" style="justify-content: flex-start;">
-                    <a href="https://facebook.com/yourpage" class="social-link facebook-bg" target="_blank" title="تابعنا على فيسبوك">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://instagram.com/yourpage" class="social-link instagram-bg" target="_blank" title="تابعنا على إنستغرام">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://tiktok.com/@yourpage" class="social-link tiktok-bg" target="_blank" title="تابعنا على تيك توك">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+                    <a href="#trackers" class="btn btn-outline">اكتشف focus.trackers</a>
                 </div>
             </div>
             
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="تطبيقات التتبع المتعددة">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="focus.trackers - حلول الإنتاجية الرقمية">
             </div>
         </div>
     </header>
 
-    <!-- المتتبعات -->
+    <!-- focus.trackers -->
     <section id="trackers" class="trackers section section-alt">
         <div class="container">
-            <h2 class="text-center">متتبعاتنا المتخصصة</h2>
-            <p class="text-center">اختر ما يناسب احتياجاتك أو استفد من الباقة الكاملة</p>
+            <h2 class="text-center">focus.trackers - حلول الإنتاجية الرقمية</h2>
+            <p class="text-center">منصة متكاملة تضم ثلاثة متتبعات متخصصة لتحسين حياتك اليومية وزيادة إنتاجيتك</p>
             
             <div class="trackers-grid">
                 <div class="tracker-card">
                     <div class="tracker-icon habit-icon">
                         <i class="fas fa-running"></i>
                     </div>
-                    <h3>متتبع العادات</h3>
-                    <p>أداة تساعدك على تتبع عاداتك اليومية مثل الاستيقاظ المبكر، الرياضة، القراءة، وشرب الماء. يتيح لك رؤية التزامك اليومي والأسبوعي بطريقة منظمة، مما يساعدك على بناء عادات إيجابية والاستمرار عليها.</p>
+                    <h3>Habit Tracker</h3>
+                    <p>متتبع العادات - أداة ذكية تساعدك على بناء وتتبع العادات اليومية مثل الرياضة، القراءة، الاستيقاظ المبكر، وشرب الماء. احصل على إحصائيات مرئية وتقارير أسبوعية لتقييم تقدمك.</p>
                     <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تتبع حتى 10 عادات يومية</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تتبع حتى 15 عادة يومية</li>
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> إشعارات وتذكيرات ذكية</li>
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تقارير أسبوعية وشهرية</li>
                     </ul>
@@ -744,10 +757,10 @@
                     <div class="tracker-icon task-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
-                    <h3>متتبع المهام</h3>
-                    <p>يساعدك على تنظيم مهامك اليومية والأسبوعية، تحديد الأولويات، ومعرفة المهام المنجزة وغير المنجزة. مناسب للطلاب، الموظفين، وأصحاب المشاريع لزيادة الإنتاجية وتقليل التشتت.</p>
+                    <h3>Task Tracker</h3>
+                    <p>متتبع المهام - نظام متقدم لإدارة المهام اليومية والمشاريع. رتب مهامك حسب الأولوية، حدد المواعيد النهائية، وتابع التقدم بسهولة. مثالي للطلاب، الموظفين، وأصحاب المشاريع.</p>
                     <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> إدارة 50 مهمة نشطة</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> إدارة 100 مهمة نشطة</li>
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تقسيم المهام إلى خطوات</li>
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تذكير بالمواعيد النهائية</li>
                     </ul>
@@ -757,11 +770,11 @@
                     <div class="tracker-icon finance-icon">
                         <i class="fas fa-wallet"></i>
                     </div>
-                    <h3>متتبع المصاريف</h3>
-                    <p>أداة بسيطة لتسجيل المصاريف والدخل اليومي، ومعرفة أين يذهب المال. يساعدك على التحكم في ميزانيتك، تقليل المصاريف غير الضرورية، وتحسين التخطيط المالي.</p>
+                    <h3>Finance Tracker</h3>
+                    <p>متتبع المصاريف - أداة مالية ذكية لتسجيل الدخل والمصروفات، وتصنيف النفقات، ومراقبة الميزانية الشهرية. ساعد نفسك على الادخار واتخاذ قرارات مالية أفضل.</p>
                     <ul style="text-align: right; padding-right: 20px; color: var(--gray);">
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تتبع المصاريف والدخل</li>
-                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تصنيف النفقات</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تصنيف النفقات تلقائياً</li>
                         <li><i class="fas fa-check" style="color: var(--secondary); margin-left: 8px;"></i> تحليل الإنفاق الشهري</li>
                     </ul>
                 </div>
@@ -793,7 +806,7 @@
                         <li><i class="fas fa-times"></i> تقارير متقدمة</li>
                     </ul>
                     
-                    <a href="https://wa.me/212612345678?text=أريد شراء متتبع واحد" class="btn btn-outline" target="_blank">اشتري الآن</a>
+                    <a href="https://wa.me/212684352584?text=أريد شراء متتبع واحد من focus.trackers" class="btn btn-outline" target="_blank">اشتري الآن</a>
                 </div>
                 
                 <div class="pricing-card popular">
@@ -814,7 +827,7 @@
                         <li><i class="fas fa-check"></i> مزامنة بين الأجهزة</li>
                     </ul>
                     
-                    <a href="https://wa.me/212612345678?text=أريد شراء باقة 3 متتبعات" class="btn btn-primary" target="_blank">اشتري الباقة</a>
+                    <a href="https://wa.me/212684352584?text=أريد شراء باقة 3 متتبعات من focus.trackers" class="btn btn-primary" target="_blank">اشتري الباقة</a>
                 </div>
             </div>
             
@@ -826,11 +839,11 @@
     <section id="testimonials" class="testimonials section">
         <div class="container">
             <h2 class="text-center">ماذا يقول مستخدمونا؟</h2>
-            <p class="text-center">انضم إلى مئات الأشخاص الذين حسنوا من حياتهم باستخدام متتبعاتنا</p>
+            <p class="text-center">انضم إلى مئات الأشخاص الذين حسنوا من حياتهم باستخدام focus.trackers</p>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <p>"متتبع العادات غير حياتي تماماً! استطعت الانتظام على الرياضة والقراءة لأول مرة في حياتي."</p>
+                    <p>"Habit Tracker غير حياتي تماماً! استطعت الانتظام على الرياضة والقراءة لأول مرة في حياتي."</p>
                     <div class="author">أحمد - طالب جامعي</div>
                     <div style="color: #fbbf24;">
                         <i class="fas fa-star"></i>
@@ -842,7 +855,7 @@
                 </div>
                 
                 <div class="testimonial-card">
-                    <p>"كمستقل، متتبع المهام ساعدني على تنظيم عملي وزيادة إنتاجيتي بنسبة 50% على الأقل."</p>
+                    <p>"كمستقل، Task Tracker ساعدني على تنظيم عملي وزيادة إنتاجيتي بنسبة 50% على الأقل."</p>
                     <div class="author">سارة - مصممة جرافيك</div>
                     <div style="color: #fbbf24;">
                         <i class="fas fa-star"></i>
@@ -854,7 +867,7 @@
                 </div>
                 
                 <div class="testimonial-card">
-                    <p>"متتبع المصاريف جعلني أتحكم في مصروفي وأوفر 30% من دخلي الشهري. أنصح به بشدة!"</p>
+                    <p>"Finance Tracker جعلني أتحكم في مصروفي وأوفر 30% من دخلي الشهري. أنصح به بشدة!"</p>
                     <div class="author">محمد - مهندس برمجيات</div>
                     <div style="color: #fbbf24;">
                         <i class="fas fa-star"></i>
@@ -876,7 +889,7 @@
             <div style="max-width: 800px; margin: 50px auto 0;">
                 <div class="faq-item">
                     <div class="faq-question">
-                        كيف أشتري المتتبع؟
+                        كيف أشتري focus.trackers؟
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
@@ -886,7 +899,7 @@
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        هل يمكنني تجربة المتتبع قبل الشراء؟
+                        هل يمكنني تجربة focus.trackers قبل الشراء؟
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
@@ -921,16 +934,16 @@
     <section class="social-section section">
         <div class="container">
             <h2 class="text-center">تابعنا على وسائل التواصل الاجتماعي</h2>
-            <p class="text-center">انضم إلى مجتمعنا للحصول على نصائح حصرية، تحديثات، وعروض خاصة</p>
+            <p class="text-center">انضم إلى مجتمع focus.trackers للحصول على نصائح حصرية، تحديثات، وعروض خاصة</p>
             
             <div class="social-links">
-                <a href="https://facebook.com/yourpage" class="social-link facebook-bg" target="_blank" title="تابعنا على فيسبوك">
+                <a href="https://www.facebook.com/profile.php?id=61586998473295" class="social-link facebook-bg" target="_blank" title="تابعنا على فيسبوك">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://instagram.com/yourpage" class="social-link instagram-bg" target="_blank" title="تابعنا على إنستغرام">
+                <a href="https://instagram.com/focus__trackers" class="social-link instagram-bg" target="_blank" title="تابعنا على إنستغرام">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://tiktok.com/@yourpage" class="social-link tiktok-bg" target="_blank" title="تابعنا على تيك توك">
+                <a href="https://www.tiktok.com/@focus.trackers1" class="social-link tiktok-bg" target="_blank" title="تابعنا على تيك توك">
                     <i class="fab fa-tiktok"></i>
                 </a>
             </div>
@@ -951,7 +964,7 @@
         <div class="container">
             <h3>تواصل معنا مباشرة على واتساب</h3>
             <p>لديك سؤال أو تحتاج مساعدة في اختيار الباقة المناسبة؟ تواصل معنا الآن للحصول على استشارة مجانية.</p>
-            <a href="https://wa.me/212612345678?text=مرحباً، أريد الاستفسار عن متتبعات MultiTracker" class="whatsapp-btn" target="_blank">
+            <a href="https://wa.me/212684352584?text=مرحباً، أريد الاستفسار عن focus.trackers" class="whatsapp-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 تواصل على واتساب الآن
             </a>
@@ -968,29 +981,29 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h3>MultiTracker</h3>
-                    <p>منصتك الشاملة لبناء عادات أفضل، إدارة مهام أذكى، ومالية أكثر استقراراً.</p>
+                    <h3>focus.trackers</h3>
+                    <p>منصة شاملة لحلول الإنتاجية الرقمية. متتبع العادات، المهام، والمصاريف في مكان واحد.</p>
                     <div class="footer-social">
-                        <a href="https://facebook.com/yourpage" target="_blank" title="فيسبوك">
+                        <a href="https://www.facebook.com/profile.php?id=61586998473295" target="_blank" title="فيسبوك">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com/yourpage" target="_blank" title="إنستغرام">
+                        <a href="https://instagram.com/focus__trackers" target="_blank" title="إنستغرام">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://tiktok.com/@yourpage" target="_blank" title="تيك توك">
+                        <a href="https://www.tiktok.com/@focus.trackers1" target="_blank" title="تيك توك">
                             <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="https://wa.me/212612345678" target="_blank" title="واتساب">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="mailto:talibikamal24@gmail.com" target="_blank" title="البريد الإلكتروني">
+                            <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4>المتتبعات</h4>
-                    <a href="#trackers">متتبع العادات</a>
-                    <a href="#trackers">متتبع المهام</a>
-                    <a href="#trackers">متتبع المصاريف</a>
+                    <h4>focus.trackers</h4>
+                    <a href="#trackers">Habit Tracker</a>
+                    <a href="#trackers">Task Tracker</a>
+                    <a href="#trackers">Finance Tracker</a>
                 </div>
                 
                 <div>
@@ -998,24 +1011,25 @@
                     <a href="#pricing">الأسعار</a>
                     <a href="#testimonials">الشهادات</a>
                     <a href="#faq">الأسئلة الشائعة</a>
+                    <a href="mailto:talibikamal24@gmail.com">اتصل بنا</a>
                 </div>
                 
                 <div>
                     <h4>اتصل بنا</h4>
-                    <a href="mailto:info@multitracker.com">info@multitracker.com</a>
-                    <a href="tel:+212612345678">+212 612-345678</a>
+                    <a href="mailto:talibikamal24@gmail.com">talibikamal24@gmail.com</a>
+                    <a href="tel:+212684352584">+212 684-352584</a>
                     <p>المغرب</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 MultiTracker. جميع الحقوق محفوظة.</p>
+                <p>© 2023 focus.trackers. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
     <!-- زر واتساب عائم -->
-    <a href="https://wa.me/212612345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/212684352584" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1054,14 +1068,23 @@
             });
         });
         
-        // تغيير روابط وسائل التواصل الاجتماعي
+        // تحديث جميع روابط واتساب
         document.addEventListener('DOMContentLoaded', function() {
-            // يمكنك تغيير هذه الروابط لروابطك الحقيقية
+            const whatsappNumber = '212684352584';
+            
+            // تحديث جميع روابط واتساب
+            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+                const currentHref = link.getAttribute('href');
+                const newHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('مرحباً، أريد الاستفسار عن focus.trackers')}`;
+                link.setAttribute('href', newHref);
+            });
+            
+            // تحديث روابط وسائل التواصل
             const socialLinks = {
-                facebook: 'https://facebook.com/yourpage',
-                instagram: 'https://instagram.com/yourpage', 
-                tiktok: 'https://tiktok.com/@yourpage',
-                whatsapp: 'https://wa.me/212612345678'
+                facebook: 'https://www.facebook.com/profile.php?id=61586998473295',
+                instagram: 'https://instagram.com/focus__trackers',
+                tiktok: 'https://www.tiktok.com/@focus.trackers1',
+                email: 'mailto:talibikamal24@gmail.com'
             };
             
             // تحديث روابط فيسبوك
@@ -1079,15 +1102,21 @@
                 link.setAttribute('href', socialLinks.tiktok);
             });
             
-            // تحديث روابط واتساب
-            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-                link.setAttribute('href', socialLinks.whatsapp);
+            // تحديث روابط البريد الإلكتروني
+            document.querySelectorAll('a[href*="mailto:"]').forEach(link => {
+                if (link.getAttribute('href').includes('mailto:')) {
+                    link.setAttribute('href', socialLinks.email);
+                    if (link.textContent.includes('@')) {
+                        link.textContent = 'talibikamal24@gmail.com';
+                    }
+                }
             });
             
             // تحديث رقم الهاتف
             const phoneLink = document.querySelector('a[href^="tel:"]');
             if (phoneLink) {
-                phoneLink.setAttribute('href', `tel:+${socialLinks.whatsapp.split('/').pop()}`);
+                phoneLink.setAttribute('href', `tel:+${whatsappNumber}`);
+                phoneLink.textContent = `+${whatsappNumber}`;
             }
         });
     </script>
