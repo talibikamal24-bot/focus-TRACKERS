@@ -193,7 +193,6 @@
             gap: 40px;
         }
 
-        /* البطاقات الفخمة */
         .benefit-box {
             background: linear-gradient(145deg, #ffffff, #fbf9f5);
             padding: 30px;
@@ -256,10 +255,10 @@
             box-shadow: 0 30px 50px rgba(0,0,0,0.03);
         }
 
-        /* كروت السيارات فاخرة */
+        /* كروت السيارات الفاخرة – نسخة حقيقية */
         .car-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
@@ -272,6 +271,8 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .car-card:hover {
@@ -282,7 +283,7 @@
 
         .car-icon {
             font-size: 2.8em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .car-title {
@@ -293,15 +294,42 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .car-sub {
+            font-size: 1.1em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
         .car-detail {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 15px 0;
+            margin: 10px 0;
             color: #2c3e50;
             font-size: 1.1em;
             border-bottom: 1px dashed #eae0c5;
             padding-bottom: 8px;
+        }
+
+        .car-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0 10px;
+        }
+
+        .service-badge {
+            background: #f0f4fa;
+            color: #0a1f2e;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid #e2dccd;
         }
 
         .car-price {
@@ -316,6 +344,11 @@
             width: 100%;
             text-align: center;
             border: 1px solid #d4af37;
+        }
+
+        .stars {
+            color: #d4af37;
+            letter-spacing: 3px;
         }
 
         .note-indicative {
@@ -529,7 +562,7 @@
             </div>
         </div>
 
-        <!-- القسم الثاني: مرونة وأسعار -->
+        <!-- القسم الثاني: مرونة وأسعار (ملخص عام) -->
         <section>
             <h2>🚘 حرية كاملة + خيارات تلائم الجميع</h2>
             <div class="grid-2">
@@ -539,76 +572,197 @@
                     <p style="margin-top: 20px;"><strong>✅ جميع المدن المغربية:</strong> يمكنك استلام السيارة في مراكش وتسليمها في الدار البيضاء، طنجة، أكادير أو أي مدينة أخرى (خدمة الذهاب والإياب).</p>
                 </div>
                 <div style="background: #fefcf7; padding: 30px; border-radius: 30px; border: 1px solid #d4af37;">
-                    <h3 style="color: #0a1f2e;">💰 عروض Ramzi cars</h3>
+                    <h3 style="color: #0a1f2e;">💰 فئات الأسعار</h3>
                     <ul>
-                        <li>🚙 اقتصادي (كلاس أ): من 250 درهم / يوم</li>
-                        <li>🚗 عائلي (كلاس ب): من 350 درهم / يوم</li>
-                        <li>🏎️ دفع رباعي (4×4): من 550 درهم / يوم</li>
-                        <li>✨ فاخر (SUV): من 750 درهم / يوم</li>
+                        <li>🚙 اقتصادي: من 330 درهم / يوم</li>
+                        <li>🚗 عائلي: من 385 درهم / يوم</li>
+                        <li>🏎️ دفع رباعي: من 495 درهم / يوم</li>
+                        <li>✨ فاخر SUV: من 770 درهم / يوم</li>
                     </ul>
                     <p style="margin-top: 20px; background: #d4af37; color: #0a1f2e; padding: 10px 20px; border-radius: 60px; text-align: center; font-weight: 900;"><i class="fas fa-tag"></i> خصم خاص: حجز 7 أيام أو أكثر → 15% تخفيض</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== قسم السيارات النموذجي الفاخر ===== -->
+        <!-- ===== أسطول حقيقي – مستخرج من الصور ===== -->
         <section>
-            <h2>🚘 أسطول سيارات Ramzi cars – نخبة المركبات</h2>
-            <p style="font-size: 1.3em; margin-bottom: 30px;">اختر سيارتك المثالية من مجموعتنا المتنوعة. جميع السيارات مكيفة ومؤمنة بالكامل، وجاهزة لرحلتك.</p>
+            <h2>🚘 أسطول Ramzi cars – سيارات حقيقية بأسعار اليوم</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">جميع السيارات مكيفة، مؤمنة بالكامل، وتشمل خدمات المطار ومساعدة 24/7. الأسعار بالدرهم لليوم الواحد (مرجع: 1€ ≈ 11 درهم).</p>
             
             <div class="car-grid">
+                <!-- 1. Dacia Logan -->
+                <div class="car-card">
+                    <div class="car-icon">🚗</div>
+                    <div class="car-title">داسيا لوغان</div>
+                    <div class="car-sub">Dacia Logan</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">330 درهم / يوم</div>
+                </div>
+                <!-- 2. Dacia Sandero -->
                 <div class="car-card">
                     <div class="car-icon">🚗💨</div>
-                    <div class="car-title">رينو كليو</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Renault Clio</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">يدوي / عادي</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">250 درهم / يوم</div>
-                </div>
-                <div class="car-card">
-                    <div class="car-icon">🚙</div>
                     <div class="car-title">داسيا سانديرو</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Dacia Sandero</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">300 درهم / يوم</div>
+                    <div class="car-sub">Dacia Sandero</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">330 درهم / يوم</div>
                 </div>
+                <!-- 3. Dacia Lodgy -->
                 <div class="car-card">
                     <div class="car-icon">🚐</div>
-                    <div class="car-title">بيجو 208</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Peugeot 208</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">380 درهم / يوم</div>
+                    <div class="car-title">داسيا لودجي</div>
+                    <div class="car-sub">Dacia Lodgy</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">770 درهم / يوم</div>
                 </div>
+                <!-- 4. Volkswagen Touareg -->
                 <div class="car-card">
                     <div class="car-icon">🏞️🚙</div>
-                    <div class="car-title">داسيا دستر</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Dacia Duster 4x4</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">يدوي</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">550 درهم / يوم</div>
+                    <div class="car-title">فولكسفاغن تواريغ</div>
+                    <div class="car-sub">VW Touareg</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">495 درهم / يوم</div>
                 </div>
+                <!-- 5. Peugeot 208 -->
+                <div class="car-card">
+                    <div class="car-icon">🚘</div>
+                    <div class="car-title">بيجو 208</div>
+                    <div class="car-sub">Peugeot 208</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">770 درهم / يوم</div>
+                </div>
+                <!-- 6. Hyundai Tucson -->
                 <div class="car-card">
                     <div class="car-icon">✨🚘</div>
                     <div class="car-title">هيونداي توسان</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Hyundai Tucson</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">750 درهم / يوم</div>
+                    <div class="car-sub">Hyundai Tucson</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">495 درهم / يوم</div>
                 </div>
+                <!-- 7. Fiat 500 -->
                 <div class="car-card">
-                    <div class="car-icon">👨‍👩‍👧‍👦</div>
-                    <div class="car-title">داسيا لوغان</div>
-                    <div style="font-size: 1.1em; color: #d4af37; margin-bottom: 10px;">Dacia Logan MCV</div>
-                    <div class="car-detail"><span>🕹️ ناقل الحركة:</span> <span style="font-weight: 700;">يدوي</span></div>
-                    <div class="car-detail"><span>❄️ تكييف:</span> <span style="font-weight: 700;">✅ نعم</span></div>
-                    <div class="car-price">350 درهم / يوم</div>
+                    <div class="car-icon">🐞</div>
+                    <div class="car-title">فيات 500</div>
+                    <div class="car-sub">Fiat 500</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">462 درهم / يوم</div>
+                </div>
+                <!-- 8. Dacia Duster 4x4 -->
+                <div class="car-card">
+                    <div class="car-icon">⛰️🚙</div>
+                    <div class="car-title">داسيا دستر</div>
+                    <div class="car-sub">Dacia Duster 4x4</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">495 درهم / يوم</div>
+                </div>
+                <!-- 9. Opel Corsa -->
+                <div class="car-card">
+                    <div class="car-icon">🚗</div>
+                    <div class="car-title">أوبل كورسا</div>
+                    <div class="car-sub">Opel Corsa</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">385 درهم / يوم</div>
+                </div>
+                <!-- 10. Volkswagen T-Roc -->
+                <div class="car-card">
+                    <div class="car-icon">✨🚙</div>
+                    <div class="car-title">فولكسفاغن تي-روك</div>
+                    <div class="car-sub">VW T-Roc</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">770 درهم / يوم</div>
+                </div>
+                <!-- 11. Renault Express -->
+                <div class="car-card">
+                    <div class="car-icon">📦🚐</div>
+                    <div class="car-title">رينو إكسبرس</div>
+                    <div class="car-sub">Renault Express</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">385 درهم / يوم</div>
+                </div>
+                <!-- 12. Peugeot 3008 -->
+                <div class="car-card">
+                    <div class="car-icon">🏁🚘</div>
+                    <div class="car-title">بيجو 3008</div>
+                    <div class="car-sub">Peugeot 3008</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">أوتوماتيك</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">770 درهم / يوم</div>
+                </div>
+                <!-- 13. Renault Clio -->
+                <div class="car-card">
+                    <div class="car-icon">🚗💨</div>
+                    <div class="car-title">رينو كليو</div>
+                    <div class="car-sub">Renault Clio</div>
+                    <div class="stars">★★★★★</div>
+                    <div class="car-detail"><span>🕹️ القير:</span> <span style="font-weight: 700;">يدوي</span></div>
+                    <div class="car-services">
+                        <span class="service-badge"><i class="fas fa-plane"></i> خدمات المطار</span>
+                        <span class="service-badge"><i class="fas fa-tools"></i> مساعدة 24/7</span>
+                    </div>
+                    <div class="car-price">385 درهم / يوم</div>
                 </div>
             </div>
 
             <div class="note-indicative">
-                ⚠️ الأسعار إرشادية وتعبر عن خبرتنا الطويلة في تقديم أفضل قيمة. للعرض الدقيق والحجز الفوري، تواصل معنا على واتساب.
+                ⚠️ الأسعار حقيقية ومأخوذة من العروض الحالية (1 يورو ≈ 11 درهم). للعروض الخاصة والحجز الفوري، تواصل معنا على واتساب.
             </div>
         </section>
 
@@ -626,7 +780,7 @@
             </div>
         </section>
 
-        <!-- نصائح ذهبية من 100 عام -->
+        <!-- نصائح ذهبية – 100 عام -->
         <section class="tips">
             <h2>🧾 نصائح ذهبية – من تجربة 100 عام</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
